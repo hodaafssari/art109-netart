@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>Overthinking Project</title>
+    <link rel="stylesheet" href="styles.css">
+    
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f9;
+            overflow-x: hidden;
+        }
+
+        .mind-map, .thought-stream {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            transition: background-color 0.3s ease;
+        }
+
+        /* Initial Mind Map */
+        .node {
+            background-color: #88aaff;
+            color: white;
+            padding: 20px;
+            border-radius: 50%;
+            margin: 10px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .node:hover {
+            transform: scale(1.1);
+        }
+
+        .sub-node {
+            display: none;
+            background-color: #ff88aa;
+        }
+
+        /* Thought Stream */
+        .thought-stream {
+            flex-direction: column;
+            display: none;
+            padding: 20px;
+        }
+
+        .thought {
+            background-color: #ffdda3;
+            color: #333;
+            padding: 15px;
+            margin: 10px;
+            border-radius: 10px;
+            animation: slideDown 0.8s ease;
+        }
+
+        @keyframes slideDown {
+            from {
+                transform: translateY(-50%);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .calm-button {
+            background-color: #88ffaa;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+            margin-top: 20px;
+            transition: all 0.3s ease;
+        }
+
+        .calm-button:hover {
+            background-color: #66cc88;
+        }
+
+        /* Anxiety phase */
+        .anxiety {
+            background-color: #ff4444;
+            transition: background-color 0.3s ease;
+        }
+    </style>
+</head>
+<body>
+
+  <div class="hover-container">
+    <span class="hover-item">Hover</span>
+    <span class="hover-item">Over</span>
+    <span class="hover-item">These</span>
+    <span class="hover-item">Words</span>
+</div>
+
+<!-- Mind Map Interface -->
+<div id="mindMap" class="mind-map">
+    <div class="node" onclick="expandThoughts()">Thought 1</div>
+    <div class="node" onclick="expandThoughts()">Thought 2</div>
+    <div class="node" onclick="expandThoughts()">Thought 3</div>
+</div>
+
+<!-- Thought Stream Interface -->
+<div id="thoughtStream" class="thought-stream">
+    <div class="thought">This thought is spiraling...</div>
+    <div class="thought">Anxiety intensifies...</div>
+    <div class="thought">Thoughts are overwhelming...</div>
+    <button class="calm-button" onclick="calmDown()">Click to Calm Down</button>
+</div>
+
+<script>
+    let thoughtsExpanded = 0;
+
+    // Function to expand thoughts in the mind map
+    function expandThoughts() {
+        thoughtsExpanded++;
+        if (thoughtsExpanded >= 3) {
+            startThoughtStream();
+        }
+    }
+
+    // Transition to Thought Stream phase
+    function startThoughtStream() {
+        document.getElementById("mindMap").style.display = "none";
+        document.getElementById("thoughtStream").style.display = "flex";
+        document.body.classList.add('anxiety'); // Change background color to anxiety
+        escalateAnxiety(); // Start anxiety escalation
+    }
+
+    // Function to escalate anxiety (e.g., background color changes)
+    function escalateAnxiety() {
+        setTimeout(() => {
+            document.body.style.backgroundColor = '#ff2222'; // More intense color
+        }, 1000);
+    }
+
+    // Calm down by resolving anxiety and transitioning back to calm state
+    function calmDown() {
+        document.body.style.backgroundColor = '#88ffaa'; // Calming green color
+        document.body.classList.remove('anxiety');
+        document.getElementById("thoughtStream").innerHTML = "<div class='thought'>You have calmed down. Thoughts are manageable now.</div>";
+    }
+</script>
+
+</body>
+</html>
