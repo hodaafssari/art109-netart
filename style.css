@@ -3,8 +3,15 @@ body {
     margin: 0;
     overflow: hidden;
     font-family: 'Arial', sans-serif;
-    background: linear-gradient(180deg, #ff7e5f, #feb47b); /* Warm tones */
+    background: linear-gradient(180deg, #ff7e5f, #feb47b, #86a8e7, #91eae4); /* Added more colors */
     color: white;
+    animation: backgroundAnimation 10s infinite alternate; /* Background animation */
+}
+
+@keyframes backgroundAnimation {
+    0% { background: linear-gradient(180deg, #ff7e5f, #feb47b); }
+    50% { background: linear-gradient(180deg, #86a8e7, #91eae4); }
+    100% { background: linear-gradient(180deg, #ff7e5f, #feb47b); }
 }
 
 #poem-container {
@@ -16,8 +23,32 @@ body {
     max-height: 80vh; /* Limit height for better visibility */
 }
 
+#poem-container span {
+    transition: transform 0.5s, color 0.5s; /* Added color transition */
+}
+
 input, button {
     margin: 20px;
     padding: 10px;
     font-size: 1em;
+    background-color: rgba(255, 255, 255, 0.8); /* Semi-transparent background */
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+input:focus, button:hover {
+    background-color: rgba(255, 255, 255, 1); /* Full opacity on focus/hover */
+}
+
+#image-container {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: 20px;
+}
+
+#image-container img {
+    width: 150px; /* Adjust size as needed */
+    margin: 10px; /* Adjust margin as needed */
 }
