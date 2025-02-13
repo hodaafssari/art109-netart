@@ -1,11 +1,10 @@
-/* styles.css */
 body {
     margin: 0;
     overflow: hidden;
     font-family: 'Arial', sans-serif;
-    background: linear-gradient(180deg, #ff7e5f, #feb47b, #86a8e7, #91eae4); /* Added more colors */
+    background: linear-gradient(180deg, #ff7e5f, #feb47b, #86a8e7, #91eae4); 
     color: white;
-    animation: backgroundAnimation 10s infinite alternate; /* Background animation */
+    animation: backgroundAnimation 10s infinite alternate;
 }
 
 @keyframes backgroundAnimation {
@@ -19,36 +18,43 @@ body {
     font-size: 2em;
     text-align: center;
     transition: all 0.5s ease;
-    overflow: hidden; /* Prevent overflow of text */
-    max-height: 80vh; /* Limit height for better visibility */
-}
-
-#poem-container span {
-    transition: transform 0.5s, color 0.5s; /* Added color transition */
+    overflow: hidden; 
+    max-height: 80vh; 
 }
 
 input, button {
     margin: 20px;
     padding: 10px;
     font-size: 1em;
-    background-color: rgba(255, 255, 255, 0.8); /* Semi-transparent background */
+    background-color: rgba(255, 255, 255, 0.8); 
     border: none;
     border-radius: 5px;
     cursor: pointer;
 }
 
 input:focus, button:hover {
-    background-color: rgba(255, 255, 255, 1); /* Full opacity on focus/hover */
+    background-color: rgba(255, 255, 255, 1); 
 }
+
 
 #image-container {
     display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
+    flex-wrap: wrap; /
+    justify-content: space-between; /* Space between images */
+    gap: 10px; /* Space between images */
     margin-top: 20px;
 }
 
+/
+#image-container .image-div {
+    flex: 1 1 calc(33.33% - 10px); 
+    box-sizing: border-box; 
+}
+
+/
 #image-container img {
-    width: 150px; /* Adjust size as needed */
-    margin: 10px; /* Adjust margin as needed */
+    width: 100%; 
+    height: auto; /
+    border-radius: 8px; 
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); 
 }

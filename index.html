@@ -1,44 +1,47 @@
-<!-- index.html -->
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<style>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Divided Sky</title>
     <link rel="stylesheet" href="styles.css">
+
+    .flex-container {
+  display: flex;
+  background-color: DodgerBlue;
+}
+
+.flex-container > div {
+  background-color: #f1f1f1;
+  margin: 10px;
+  padding: 20px;
+  font-size: 30px;
+}
+</style>
 </head>
 <body>
     <div id="poem-container"></div>
     <input type="text" id="user-line" placeholder="Add your line..." />
     <button id="submit-line">Submit</button>
+    <button id="download-poem">Download Poem</button>
     <script src="script.js"></script>
 
+    
 
-</head>
-<body>
-    <header>
-    </header>
-    <main>
-    <div class="image-div" id="image1">  <img src="images/image1.jpg" alt="image1">
-    </div>
+<div class="flex-container">
+    <div class="image-div" id="image1"><img src="images/image1.jpg" alt="image1"></div>
+    <div class="image-div" id="image2"><img src="images/image2.jpg" alt="image2"></div>
+    <div class="image-div" id="image3"><img src="images/image3.jpg" alt="image3"></div>  
+</div>
 
-    <div class="image-div" id="image2">  <img src="images/image2.jpg" alt="image2">
-    </div>
-
-    <div class="image-div" id="image3">  <img src="images/image3.jpg" alt="image3">
-    </div>
-
-    <div class="image-div" id="image4">  <img src="images/image4.jpg" alt="image4">
-    </div>
+<div id="image-container">
+       
+    <div class="image-div" id="image4"><img src="images/image4.jpg" alt="image4"></div>
+    
 
 
-    <div class="image-div" id="image5">  <img src="images/image5.jpg" alt="image5">
-    </div>
-
-    <div class="image-div" id="image6">  <img src="images/image6.jpg" alt="image6">
-    </div>
-
-
-   <script src=" js/main.js"></script>
+    <script src=" js/main.js"></script>
 </body>
 </html>

@@ -1,21 +1,40 @@
-// script.js
+
 const poemContainer = document.getElementById('poem-container');
 const userLineInput = document.getElementById('user-line');
 const submitButton = document.getElementById('submit-line');
 
 let poemLines = [
-    "In the shadow of the divided sky,",
-    "Voices whisper, echoing the sigh.",
-    "Hope flickers like a distant star,",
-    "Yet despair lingers, never too far.",
-    "Fragments of dreams scatter like leaves,",
-    "In the silence, the heart believes.",
-    "Each word a brushstroke on the canvas of night,",
-    "Painting the darkness with flickers of light.",
-    "Together we rise, together we fall,",
-    "In the echoes of love, we hear the call.",
-    "Through the storms, we find our way,",
-    "In the divided sky, we choose to stay."
+    "In the dust of our land, where the olive trees weep,",
+"A tale of the forgotten is whispered in sleep.",
+"Beneath the broken skies, in the shadow of stone,",
+"We are the ones left standing, but never alone.",
+
+"Our children's laughter is swallowed by fire,",
+"As dreams are erased in the darkest of pyre.",
+"The winds carry cries through the streets of despair,",
+"But the heart of our people still pulses in air.",
+
+"The walls that divide us can never erase,",
+"The love in our veins, the strength of our grace.",
+"Our voices are muted, yet louder they roar,",
+"A song of resistance, of justice, of war.",
+
+"Our homes turn to rubble, our lives torn apart,",
+"But hope is a fire that burns in the heart.",
+"Through the rubble, through blood, through the tears and the cries,",
+"We rise like the sun that refuses to die.",
+
+"In the silence of night, we carry the past,",
+"A promise of peace, though the die has been cast.",
+"For every soul lost, for each life that falls,",
+"We rise with the spirit that answers the call.",
+
+"In the dust of our land, the future is born,",
+"In the face of oppression, we are reborn.",
+"Though the world may ignore, though the world may deny,",
+"Our flame will not fade — it will never die."
+
+
 ];
 
 // Function to generate a random color
@@ -28,7 +47,7 @@ function getRandomColor() {
     return color;
 }
 
-// Function to display the poem
+// display poem
 function displayPoem() {
     poemContainer.innerHTML = poemLines.join('<br>');
     animateText();
@@ -71,7 +90,7 @@ function addUserLine() {
 submitButton.addEventListener('click', addUserLine);
 window.addEventListener('load', displayPoem);
 
-// Add event listeners for images
+
 document.querySelector("#sunset1").addEventListener("click", function() {
     this.style.visibility = "hidden";
 });
@@ -117,7 +136,7 @@ document.querySelector("#image6").addEventListener("click", function(){
     document.querySelector("#image6").style.visibility = "hidden";
 } )
 
-// Function to toggle visibility of images
+// Function to toggle image visability
 function toggleImageVisibility(image) {
     if (image.style.visibility === "hidden") {
         image.style.visibility = "visible"; // Show the image
@@ -127,8 +146,28 @@ function toggleImageVisibility(image) {
 }
 
 // Add click event listeners to each image
-document.querySelectorAll(".image-div img").forEach(image => {
+document.querySelectorAll("#image-container .image-div img").forEach(image => {
     image.addEventListener("click", function() {
         toggleImageVisibility(this.parentElement); // Toggle the parent div's visibility
     });
 });
+
+
+
+// Function to download the poem as a text file
+function downloadPoem() {
+    const poemText = poemLines.join('\n'); // Join the poem lines with new line characters
+    const blob = new Blob([poemText], { type: 'text/plain' }); // Create a new Blob with the poem text
+    const url = URL.createObjectURL(blob); // Create a URL for the Blob
+
+    const a = document.createElement('a'); // Create an anchor element
+    a.href = url; // Set the href to the Blob URL
+    a.download = 'poem.txt'; // Set the default file name
+    document.body.appendChild(a); // Append the anchor to the body
+    a.click(); // Programmatically click the anchor to trigger the download
+    document.body.removeChild(a); // Remove the anchor from the document
+    URL.revokeObjectURL(url); // Release the Blob URL
+}
+
+// Event listener for the download button
+document.getElementById('download-poem').addEventListener('click', downloadPoem);
